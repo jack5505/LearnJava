@@ -9,11 +9,11 @@ import java.util.List;
  *
  */
 public class CollectionUtils {
-    public static<T>  T findMax(List<T> list, Comparator<? super T> comparator)
+    public static<T extends Comparable>  T findMax(List<T> list)
     {
         T max = list.get(0);
         for(T i : list){
-            if(comparator.compare(max,i) < 0){
+            if(max.compareTo(i)  < 0){
                 max = i;
             }
         }
@@ -33,13 +33,7 @@ public class CollectionUtils {
 
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(34,4235,436,13);
-        Integer found = findMax(list, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return Integer.compare(o1,o2);
-            }
-        });
-        System.out.println(found);
+
         List<SuperPerson> list1 = Arrays.asList(
                 new SuperPerson("Jack",23),
                 new SuperPerson("Salom",12),
@@ -61,12 +55,9 @@ public class CollectionUtils {
         // Person jav8Max = findMax(list1,Comparator.comparing(Person::getName).thenComparing(Person::getAge));
 
         Comparator<Person> comparator = Comparator.comparing(Person::getName).thenComparing(Person::getAge);
-        SuperPerson jav8Max = findMax(list1,comparator);
+        System.out.println(findMax(list));
 
 
-
-       // System.out.println(max);
-        System.out.println(jav8Max);
 
 
     }
