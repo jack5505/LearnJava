@@ -40,21 +40,7 @@ public class CollectionUtils {
                 new SuperPerson("Anvar",12),
                 new SuperPerson("Telegram bot",12)
         );
-
-        /*        Person max = findMax(list1, new Comparator<Person>() {
-            @Override
-            public int compare(Person o1, Person o2) {
-               int i = o1.getName().compareTo(o2.getName());
-               if(i != 0) return i;
-               return Integer.compare(o1.getAge(),o2.getAge());
-            }
-        });
-        */
-
-
-        // Person jav8Max = findMax(list1,Comparator.comparing(Person::getName).thenComparing(Person::getAge));
-
-        Comparator<Person> comparator = Comparator.comparing(Person::getName).thenComparing(Person::getAge);
+        
         System.out.println(findMax(list));
 
 
